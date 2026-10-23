@@ -1,0 +1,48 @@
+name: veriwork_mobile
+description: PagerLook (VeriWork) mobile app for employees, companies and platform admins.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+  flutter: '>=3.27.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management & navigation
+  flutter_riverpod: ^2.5.1
+  go_router: ^14.2.0
+
+  # Networking
+  dio: ^5.4.3
+  http_parser: ^4.0.2
+  mime: ^1.0.5
+
+  # Secure session storage (Keychain / EncryptedSharedPreferences)
+  flutter_secure_storage: ^9.2.2
+
+  # Device features
+  image_picker: ^1.1.2
+  file_picker: ^8.3.7
+  url_launcher: ^6.3.0
+  share_plus: ^10.0.2
+  mobile_scanner: ^5.2.3
+  google_sign_in: ^6.2.1
+
+  # UI helpers
+  qr_flutter: ^4.1.0
+  intl: '>=0.19.0 <0.21.0'
+  webview_flutter: ^4.14.1
+  camera: ^0.12.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
