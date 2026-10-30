@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'core/platform/app_lock.dart';
 import 'core/providers.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
@@ -38,7 +39,8 @@ class VeriWorkApp extends ConsumerWidget {
             // Tap outside a field to dismiss the keyboard.
             onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
             behavior: HitTestBehavior.translucent,
-            child: child ?? const SizedBox.shrink(),
+            // iOS: Face ID / Touch ID lock screen over the app when enabled.
+            child: AppLockGate(child: child ?? const SizedBox.shrink()),
           ),
         );
       },

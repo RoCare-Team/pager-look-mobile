@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../network/api_exception.dart';
+import '../platform/ios_native.dart';
 import '../theme/app_theme.dart';
 import 'app_text_field.dart';
 
@@ -182,6 +183,8 @@ Future<bool> openExternalUrl(String? url) async {
     showToast('Invalid link', type: ToastType.error);
     return false;
   }
+  // iOS: web pages and documents open in-app (SFSafariViewController), not in Safari.
+  if (await IosNative.openInApp(uri)) return true;
   final ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
   if (!ok) showToast('Could not open the link', type: ToastType.error);
   return ok;

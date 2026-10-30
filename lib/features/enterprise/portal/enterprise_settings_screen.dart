@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/auth/company_permissions.dart';
 import '../../../core/network/api_exception.dart';
+import '../../../core/platform/app_lock.dart';
+import '../../../core/platform/ios_native.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/json.dart';
@@ -245,6 +247,7 @@ class _SecurityLinks extends StatelessWidget {
           subtitle: 'View all administrative actions',
           onTap: () => context.push('/company/audit-logs'),
         ),
+        if (IosNative.isSupported) const AppLockTile(),
       ],
     );
   }

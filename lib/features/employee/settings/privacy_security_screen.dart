@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/platform/app_lock.dart';
+import '../../../core/platform/ios_native.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/json.dart';
@@ -132,6 +134,7 @@ class _PrivacySecurityScreenState extends ConsumerState<PrivacySecurityScreen> {
                   subtitle: 'Aadhaar and face match',
                   onTap: () => context.push('/employee/verification'),
                 ),
+                if (IosNative.isSupported) const AppLockTile(),
               ],
             ),
             MenuSection(

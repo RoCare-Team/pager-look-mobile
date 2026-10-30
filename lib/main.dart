@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app.dart';
+import 'core/platform/ios_shortcuts.dart';
 import 'core/providers.dart';
 import 'core/storage/session_store.dart';
 
@@ -15,7 +16,10 @@ Future<void> main() async {
   );
   // Restore the stored session before the first guard runs; the splash screen
   // covers the gap.
-  container.read(authProvider).bootstrap();
+  final bootstrapped = container.read(authProvider).bootstrap();
 
   runApp(UncontrolledProviderScope(container: container, child: const VeriWorkApp()));
+
+  // iOS only: Home Screen quick actions (no-op elsewhere).
+  setUpIosShortcuts(container, bootstrapped);
 }
